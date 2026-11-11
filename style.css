@@ -252,6 +252,8 @@ dd.yes::before { content: "✓ "; color: var(--ok); }
   background: var(--accent); color: #07101f; font-weight: 800; font-size: 20px;
 }
 .contact__price { margin-top: 24px; }
+.contact__loc { display: flex; align-items: center; gap: 8px; margin: 4px 0 0; font-size: 17px; font-weight: 600; color: var(--text); }
+.contact__loc svg { width: 20px; height: 20px; flex: none; color: var(--accent); }
 .contact__alt { margin: 22px 0 0; color: var(--muted); font-size: 15px; }
 .cta--tight { margin-top: 12px; }
 .contact__map { min-height: 380px; }
@@ -336,7 +338,7 @@ dd.yes::before { content: "✓ "; color: var(--ok); }
   }
   .sticky__info { min-width: 0; }
   .sticky b { display: block; font-size: 17px; line-height: 1.2; white-space: nowrap; }
-  .sticky span { display: block; font-size: 11.5px; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .sticky__info > span { display: block; font-size: 11.5px; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .sticky__actions { display: flex; align-items: center; gap: 6px; }
   .sticky .icon-btn { width: 42px; height: 42px; }
   .sticky .btn { padding: 11px 14px; gap: 6px; flex: none; }

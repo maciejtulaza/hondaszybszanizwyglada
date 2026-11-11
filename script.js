@@ -1,4 +1,12 @@
 (() => {
+  /* ---------- Price from config.js ---------- */
+  const cena = Number(window.OGLOSZENIE?.cena);
+  if (cena > 0) {
+    const txt = cena.toLocaleString('pl-PL').replace(/\s/g, '\u00a0'); // 56 999
+    document.querySelectorAll('[data-price]').forEach(el => { el.textContent = txt; });
+    document.title += ` · ${txt} zł`;
+  }
+
   const COUNT = 26;
   const pad = n => String(n).padStart(2, '0');
   const full = i => `img/${pad(i)}.jpg`;
