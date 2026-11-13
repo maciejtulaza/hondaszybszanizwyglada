@@ -7,5 +7,5 @@
 
 window.OGLOSZENIE = {
   cena: 54999,
-  przebieg: 113500,
+  przebieg: 113000,
 };
