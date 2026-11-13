@@ -2,9 +2,19 @@
   /* ---------- Price from config.js ---------- */
   const cena = Number(window.OGLOSZENIE?.cena);
   if (cena > 0) {
-    const txt = cena.toLocaleString('pl-PL').replace(/\s/g, '\u00a0'); // 56 999
+    const txt = cena.toLocaleString('pl-PL').replace(/\s/g, ' '); // 56 999
     document.querySelectorAll('[data-price]').forEach(el => { el.textContent = txt; });
     document.title += ` · ${txt} zł`;
+  }
+
+  /* ---------- Mileage from config.js ---------- */
+  const przebieg = Number(window.OGLOSZENIE?.przebieg);
+  if (przebieg > 0) {
+    const full = przebieg.toLocaleString('pl-PL').replace(/\s/g, ' '); // 113 000
+    const short = Math.round(przebieg / 1000); // 113
+    document.querySelectorAll('[data-przebieg]').forEach(el => {
+      el.textContent = el.hasAttribute('data-short') ? `~${short} tys. km` : `~${full}`;
+    });
   }
 
   const COUNT = 26;

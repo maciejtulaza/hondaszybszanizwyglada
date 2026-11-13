@@ -1,9 +1,11 @@
 // =====================================================================
 //  USTAWIENIA OGŁOSZENIA
-//  Żeby zmienić cenę: wpisz nową liczbę poniżej (same cyfry, bez spacji
-//  i bez "zł"), zapisz plik, potem: git commit -am "cena" && git push
+//  Żeby zmienić wartości: wpisz nowe liczby poniżej (same cyfry,
+//  bez spacji i bez jednostek), zapisz plik, potem:
+//  git commit -am "aktualizacja" && git push
 // =====================================================================
 
 window.OGLOSZENIE = {
-  cena: 56999,
+  cena: 54999,
+  przebieg: 113500,
 };

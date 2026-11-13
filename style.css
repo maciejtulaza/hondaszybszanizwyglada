@@ -257,9 +257,8 @@ dd.yes::before { content: "✓ "; color: var(--ok); }
 .contact__alt { margin: 22px 0 0; color: var(--muted); font-size: 15px; }
 .cta--tight { margin-top: 12px; }
 .contact__map { min-height: 380px; }
-.contact__map iframe {
-  width: 100%; height: 100%; border: 0; display: block; pointer-events: none;
-  filter: invert(.92) hue-rotate(180deg) saturate(.6) brightness(.95);
+.contact__map img {
+  width: 100%; height: 100%; display: block; object-fit: cover; object-position: center;
 }
 
 .footer {
