@@ -17,6 +17,24 @@
     });
   }
 
+  /* ---------- Google Analytics from config.js ---------- */
+  const ga = window.OGLOSZENIE?.ga;
+  if (ga) {
+    const s = document.createElement('script');
+    s.async = true;
+    s.src = `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(ga)}`;
+    document.head.appendChild(s);
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function () { dataLayer.push(arguments); };
+    gtag('js', new Date());
+    gtag('config', ga);
+  }
+  const track = (name, params) => window.gtag?.('event', name, params);
+  document.addEventListener('click', e => {
+    const a = e.target.closest('a[href^="tel:"], a[href*="wa.me"], a[href*="facebook.com"]');
+    if (a) track('contact_click', { method: a.href.startsWith('tel:') ? 'phone' : a.href.includes('wa.me') ? 'whatsapp' : 'facebook' });
+  });
+
   const COUNT = 26;
   const pad = n => String(n).padStart(2, '0');
   const full = i => `img/${pad(i)}.jpg`;
@@ -60,7 +78,7 @@
     lbCount.textContent = `${cur} / ${COUNT}`;
     [cur + 1, cur - 1].forEach(n => { const p = new Image(); p.src = full((n - 1 + COUNT) % COUNT + 1); });
   }
-  function openLb(i) { show(i); lb.hidden = false; document.body.style.overflow = 'hidden'; }
+  function openLb(i) { track('photo_open', { photo: i }); show(i); lb.hidden = false; document.body.style.overflow = 'hidden'; }
   function closeLb() { lb.hidden = true; document.body.style.overflow = ''; }
   lb.querySelector('.lb__close').onclick = closeLb;
   lb.querySelector('.lb__prev').onclick = e => { e.stopPropagation(); show(cur - 1); };
@@ -99,6 +117,7 @@
   document.getElementById('openFilm').addEventListener('click', () => {
     frame.innerHTML = `<iframe src="https://www.youtube-nocookie.com/embed/${frame.dataset.yt}?autoplay=1&rel=0" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen title="Film – Honda Civic"></iframe>`;
     film.hidden = false; document.body.style.overflow = 'hidden'; hv.pause();
+    track('film_open');
   });
   const closeFilm = () => { frame.innerHTML = ''; film.hidden = true; document.body.style.overflow = ''; hv.play?.().catch(() => {}); };
   film.querySelector('.lb__close').onclick = closeFilm;

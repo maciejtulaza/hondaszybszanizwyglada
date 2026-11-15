@@ -8,4 +8,7 @@
 window.OGLOSZENIE = {
   cena: 54999,
   przebieg: 113000,
+
+  // Google Analytics: wklej Measurement ID (np. "G-ABC123XYZ"), puste = wyłączone
+  ga: "G-1M2CRSZF4R",
 };
